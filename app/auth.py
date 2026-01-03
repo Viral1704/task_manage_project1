@@ -2,7 +2,7 @@ from flask import Blueprint, request, jsonify
 
 from app.models import db, User
 
-
+import secrets
 
 auth = Blueprint('auth', __name__)
 
@@ -20,7 +20,12 @@ def login():
     if user is None or not user.check_password(password):
         return jsonify({'message' : 'Invalid credentials!'}), 401
     
-    return jsonify({'message' : 'Login successful!', 'user_id' : user.id}), 200
+    token = secrets.token_hex(16)
+
+    user.token = token
+    db.session.commit()
+
+    return jsonify({'message' : 'Login successful!', 'user_id' : user.id, 'token' : token}), 200
 
 
 @auth.route('/register', methods = ['POST'])
@@ -46,3 +51,23 @@ def register():
     db.session.commit()
 
     return jsonify({'message' : 'User registered successfully!', 'user_id' : new_user.id}), 201
+
+
+def get_user_from_token():
+    token = request.headers.get('Authorization')
+
+    if not token:
+        return None
+    
+    return  User.query.filter_by(token = token).first()
+
+
+@auth.route('/me', methods = ['GET'])
+def me():
+    user = get_user_from_token()
+
+    if not user:
+        return jsonify({'message' : 'Unauthorized!'}), 401
+    
+    return jsonify({'id' : user.id, 'username' : user.username, 'email' : user.email}), 200
+
