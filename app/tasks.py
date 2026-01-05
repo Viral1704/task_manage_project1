@@ -8,7 +8,7 @@ from app.auth import auth, get_user_from_token
 tasks_bp = Blueprint('tasks', __name__)
 
 
-@tasks_bp.route('/tasks', methods = ['POST'])
+@tasks_bp.route('', methods = ['POST'])
 def create_task():
     user = get_user_from_token()
     if not user:
@@ -38,3 +38,24 @@ def create_task():
         'description' : new_task.description,
         'status' : new_task.status
     }), 201
+
+
+@tasks_bp.route('', methods = ['GET'])
+def get_tasks():
+    user = get_user_from_token()
+    if not user:
+        return jsonify({'message' : 'Unauthorized'}), 401
+    
+    tasks = Task.query.filter_by(user_id = user.id).all()
+
+    tasks_list = []
+    for task in tasks:
+        tasks_list.append({
+            'id' : task.id,
+            'title' : task.title,
+            'description' : task.description,
+            'status' : task.status
+        })
+
+    return jsonify(tasks_list), 200
+    
