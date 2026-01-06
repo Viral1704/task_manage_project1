@@ -62,12 +62,25 @@ def get_user_from_token():
     return  User.query.filter_by(token = token).first()
 
 
-@auth.route('/me', methods = ['GET'])
-def me():
+# @auth.route('/me', methods = ['GET'])
+# def me():
+#     user = get_user_from_token()
+
+#     if not user:
+#         return jsonify({'message' : 'Unauthorized!'}), 401
+    
+#     return jsonify({'id' : user.id, 'username' : user.username, 'email' : user.email}), 200
+
+
+@auth.route('/logout', methods = ['POST'])
+def logout():
     user = get_user_from_token()
 
     if not user:
         return jsonify({'message' : 'Unauthorized!'}), 401
     
-    return jsonify({'id' : user.id, 'username' : user.username, 'email' : user.email}), 200
+    user.token = None
 
+    db.session.commit()
+
+    return jsonify({'message' : 'Logout successful!'}), 200
