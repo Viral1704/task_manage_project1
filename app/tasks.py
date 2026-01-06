@@ -117,3 +117,24 @@ def delete_task(task_id):
     db.session.commit()
 
     return "", 204
+
+
+@tasks_bp.route('/<int:task_id>', methods = ['GET'])
+def get_task(task_id):
+    user = get_user_from_token()
+    if not user:
+        return jsonify({'message' : 'Unauthorized'}), 401
+    
+    task = Task.query.get(task_id)
+    if not task:
+        return jsonify({'message' : 'Task not found!'}), 404
+    
+    if task.user_id != user.id:
+        return jsonify({'message' : 'Forbidden!'}), 403
+    
+    return jsonify({
+        'id' : task.id,
+        'title' : task.title,
+        'description' : task.description,
+        'status' : task.status
+    }), 200
