@@ -59,3 +59,41 @@ def get_tasks():
 
     return jsonify(tasks_list), 200
     
+
+@tasks_bp.route('/<int:task_id>', methods = ['PUT'])
+def update_task(task_id):
+    user = get_user_from_token()
+    if not user:
+        return jsonify({'message' : 'Unauthorized'}), 401
+    
+    task = Task.query.get(task_id)
+    if not task:
+        return jsonify({'message' : 'Task not found'}), 404
+
+    if task.user_id != user.id:
+        return jsonify({'message' : 'Forbidden'}), 403
+    
+    data = request.get_json() or {}
+
+    title =data.get("title")
+    if title:
+        task.title = title
+
+    description = data.get("description")
+    if description is not None:
+        task.description = description
+
+    status = data.get("status")
+    if status:
+        if status not in ['pending', 'in-progress', 'completed']:
+            return jsonify({'message' : 'Invalid status value'}), 400
+        task.status = status
+
+    db.session.commit()
+
+    return jsonify({
+        'id' : task.id,
+        'title' : task.title,
+        'description' : task.description,
+        'status' : task.status
+    }), 200
