@@ -1,139 +1,112 @@
-##🎯 Task Manager REST API – Flask
-#📌 Overview
+✅ Task Manager REST API (Flask)
+📌 About the Project
 
-A secure backend REST API built with Flask that allows users to manage their tasks efficiently.
-The system enforces authentication and ownership-based access control to ensure data privacy.
+This is a backend REST API built using Flask that allows users to manage their tasks securely.
+Each user can create, view, update, and delete only their own tasks using token-based authentication.
 
-#🏗 Architecture
+This project focuses on real-world backend practices like authentication, authorization, and clean API design.
 
-RESTful API design
+🎯 Project Objective
 
-Token-based authentication
+Build a secure backend system
 
-ORM-based database management
+Implement authentication using tokens
 
-Modular project structure
+Enforce user-based data access
 
-#🎯 Objective
+Practice real REST API development
 
-To develop a production-ready backend service that:
-
-Authenticates users securely
-
-Allows users to manage personal tasks
-
-Prevents unauthorized access
-
-Follows real-world API standards
-
-#🛠 Tech Stack
+🛠 Tech Stack
 
 Python
 
 Flask
 
-Flask-SQLAlchemy (ORM)
+Flask-SQLAlchemy
 
 SQLite
 
-Postman (Testing)
+Postman (API Testing)
 
-#🚀 Key Features
+🚀 Features
 
-✔ User Registration & Login
-✔ Token-based Authentication
-✔ Task CRUD Operations
-✔ Task Status Tracking
-✔ Ownership Validation
-✔ Secure API Routes
-✔ Error Handling
-✔ Clean Code Structure
+✔ User registration & login
+✔ Token-based authentication
+✔ Task CRUD operations
+✔ Task status management
+✔ Ownership-based access control
+✔ Error handling
+✔ Clean project structure
 
-#🔐 Authentication Flow
+🔐 Authentication Flow
 
 User logs in
 
-Server generates token
+Server generates a token
 
-Token sent in headers
+Token is sent in request headers
 
-Token validated on every request
+Every request is verified
 
-#📌 API Endpoints
+📌 API Endpoints
 Method	Endpoint	Description
 POST	/auth/register	Register new user
-POST	/auth/login	Login
+POST	/auth/login	Login user
 POST	/tasks	Create task
-GET	/tasks	Fetch user tasks
+GET	/tasks	Get all user tasks
 GET	/tasks/<id>	Get single task
 PUT	/tasks/<id>	Update task
 DELETE	/tasks/<id>	Delete task
-⚙ Setup Guide
-Clone Repository
-git clone <repo_url>
-cd task_manager_api
+⚙ Setup Instructions
+1. Clone Repository
+git clone https://github.com/Viral1704/task_manage_project1.git
+cd task_manage_project1
 
-Create Virtual Environment
+2. Create Virtual Environment
 python -m venv venv
 venv\Scripts\activate
 
-Install Dependencies
+3. Install Dependencies
 pip install -r requirements.txt
 
-Run Server
+4. Run Server
 flask run
 
 
-Server runs at:
+Server will start at:
 
 http://127.0.0.1:5000
 
-#🧪 Testing
+🧪 Testing
 
-Tested all APIs using Postman
-
+All APIs tested using Postman
 Verified:
 
-Token validation
+Authentication
 
-Unauthorized access prevention
+Access control
 
-CRUD functionality
+CRUD operations
 
 Error responses
 
-#📚 What I Learned
+📚 What I Learned
 
 Flask backend architecture
 
-Authentication handling
+Token authentication
 
-ORM database management
+ORM database handling
 
-REST API design
+REST API standards
 
-Secure user access
+Debugging production errors
 
-Debugging backend systems
+🏁 Conclusion
 
-#📈 Project Outcome
+This project helped me understand real backend development workflow and security practices.
 
-Built real-world backend APIs
+⭐ Author
 
-Improved API security knowledge
-
-Learned scalable backend design
-
-#🏁 Conclusion
-
-This project strengthened my understanding of:
-
-Backend development
-
-API security
-
-Database integration
-
-Real production patterns
-
-⭐ Feel free to star this repo if you found it useful!
+Viral Vaghasiya
+Backend Developer (Flask)
