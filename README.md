@@ -63,11 +63,11 @@ git clone https://github.com/Viral1704/task_manage_project1.git
 cd task_manage_project1
 
 2. Create Virtual Environment
-python -m venv venv
-venv\Scripts\activate
+python -m venv task_manage
+task_manage\Scripts\activate
 
 3. Install Dependencies
-pip install -r requirements.txt
+pip install 
 
 4. Run Server
 flask run
