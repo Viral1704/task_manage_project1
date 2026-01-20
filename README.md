@@ -1,10 +1,10 @@
-🎯 Task Manager REST API – Flask
-📌 Overview
+##🎯 Task Manager REST API – Flask
+#📌 Overview
 
 A secure backend REST API built with Flask that allows users to manage their tasks efficiently.
 The system enforces authentication and ownership-based access control to ensure data privacy.
 
-🏗 Architecture
+#🏗 Architecture
 
 RESTful API design
 
@@ -14,7 +14,7 @@ ORM-based database management
 
 Modular project structure
 
-🎯 Objective
+#🎯 Objective
 
 To develop a production-ready backend service that:
 
@@ -26,7 +26,7 @@ Prevents unauthorized access
 
 Follows real-world API standards
 
-🛠 Tech Stack
+#🛠 Tech Stack
 
 Python
 
@@ -38,7 +38,7 @@ SQLite
 
 Postman (Testing)
 
-🚀 Key Features
+#🚀 Key Features
 
 ✔ User Registration & Login
 ✔ Token-based Authentication
@@ -49,7 +49,7 @@ Postman (Testing)
 ✔ Error Handling
 ✔ Clean Code Structure
 
-🔐 Authentication Flow
+#🔐 Authentication Flow
 
 User logs in
 
@@ -59,7 +59,7 @@ Token sent in headers
 
 Token validated on every request
 
-📌 API Endpoints
+#📌 API Endpoints
 Method	Endpoint	Description
 POST	/auth/register	Register new user
 POST	/auth/login	Login
@@ -88,7 +88,7 @@ Server runs at:
 
 http://127.0.0.1:5000
 
-🧪 Testing
+#🧪 Testing
 
 Tested all APIs using Postman
 
@@ -102,7 +102,7 @@ CRUD functionality
 
 Error responses
 
-📚 What I Learned
+#📚 What I Learned
 
 Flask backend architecture
 
@@ -116,7 +116,7 @@ Secure user access
 
 Debugging backend systems
 
-📈 Project Outcome
+#📈 Project Outcome
 
 Built real-world backend APIs
 
@@ -124,7 +124,7 @@ Improved API security knowledge
 
 Learned scalable backend design
 
-🏁 Conclusion
+#🏁 Conclusion
 
 This project strengthened my understanding of:
 
